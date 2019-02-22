@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Municipios" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f1d7a74-37bc-448a-b697-be4f78d5aa8b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     datos.`id_localidad` AS datos_id_localidad,
+     t_localidad.`localidad` AS t_localidad_localidad
+FROM
+     `t_localidad` t_localidad INNER JOIN `datos` datos ON t_localidad.`id_localidad` = datos.`id`]]>
+	</queryString>
+	<field name="datos_id_localidad" class="java.lang.Integer"/>
+	<field name="t_localidad_localidad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="17" width="287" height="36" uuid="56662d5a-1a94-424a-abdb-1c4b7c52962c"/>
+				<textElement>
+					<font fontName="Fira Code" size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Reporte de Municipios]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="33" y="0" width="111" height="79" uuid="d0d89ea6-34c1-4b4d-b767-3911f0c12d05"/>
+				<imageExpression><![CDATA["C:\\Users\\conve\\Downloads\\tatuaje.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="472" y="59" width="100" height="20" uuid="d0009fef-4a78-4886-8689-10e55b1446b3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="67" y="2" width="100" height="20" uuid="27c961e7-d259-41b9-b34f-30ba77e36c6a"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="2" width="100" height="20" uuid="bb771352-3008-4cee-a3f2-19be7f8282a2"/>
+				<text><![CDATA[Localidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="96" splitType="Stretch">
+			<textField>
+				<reportElement x="67" y="54" width="123" height="20" uuid="a9c1aa0c-41b5-446d-8148-89c0a57d9f4d"/>
+				<textFieldExpression><![CDATA[$F{datos_id_localidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="59" width="141" height="20" uuid="1be48e45-65d8-40a4-a122-a25fa014471a"/>
+				<textFieldExpression><![CDATA[$F{t_localidad_localidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="21" width="80" height="20" uuid="520fb742-ce0f-40dc-b715-6e00cb27ca17"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="270" y="21" width="40" height="20" uuid="0b7b5051-acfa-4ba2-9dd2-28bf7df6d4f4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
